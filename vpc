@@ -1,0 +1,39 @@
+VPCs and Subnets
+
+A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS cloud. 
+You can launch your AWS resources, such as Amazon EC2 instances, into your VPC.
+
+A subnet is a range of IP addresses in your VPC. You can launch AWS resources into a subnet that you select. 
+	Public and Private
+	Multiple layer of security SG, ACL
+
+gains of launching ec2 instances in VPC.
+	static private IP
+	we can assign ipv6 CIDR block
+	network interface
+	change SG
+	control in/out bound traffic
+	ACL
+	Single tenant HW.
+
+Default and Nondefault VPCs
+	Default VPC is coming with AWS startup with defalt subnet in each AZ.
+	While launching instance in default VPC no need to provide subnet.
+	VPC created by us and additional subnet created for default and our VPC are called non default subnets.
+
+Accessing the Internet:
+	Your default VPC includes an Internet gateway, and each default subnet is a public subnet.
+	hese instances can communicate with the Internet through the Internet gateway
+	An Internet gateway enables your instances to connect to the Internet through the Amazon EC2 network edge
+	each instance that you launch into a nondefault subnet has a private IPv4 address, but no public IPv4 address, 
+		unless you specifically assign one at launch, or you modify the subnet's public IP address attribute. 
+		These instances can communicate with each other, but can't access the Internet
+	You can enable Internet access for an instance launched into a nondefault subnet by attaching an Internet gateway to its VPC (if its VPC is not a default VPC) 
+		and associating an Elastic IP address with the instance.
+
+	Alternatively, to allow an instance in your VPC to initiate outbound connections to the Internet but prevent unsolicited inbound connections from the Internet, 
+		you can use a network address translation (NAT) device for IPv4 traffic. NAT maps multiple private IPv4 addresses to a single public IPv4 address. 
+		A NAT device has an Elastic IP address and is connected to the Internet through an Internet gateway.
+
+
+	
